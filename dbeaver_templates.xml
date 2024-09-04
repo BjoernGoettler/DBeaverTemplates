@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+    <template autoinsert="true" context="sql" deleted="false" description="Select active sessions that are not this one" enabled="true" name="sactivity">select * from pg_stat_activity where pid != pg_backend_pid() ${cursor} and state!= 'idle' order by query_start;</template>
+    <template autoinsert="true" context="sql" deleted="false" description="Select sessions that are made from my own application if application_name is set" enabled="true" name="smine">select * from pg_stat_activity where state != 'idle' and pid != pg_backend_pid() and application_name = current_setting('application_name');</template>
+</templates>
